@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -23,7 +24,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
             color: #f0f0f0;
-            overflow: hidden; /* Prevent scrollbars during animation */
+            overflow: hidden; 
             cursor: none; /* Sembunyikan kursor asli untuk animasi ular */
         }
         /* --- Menerapkan Font Orbitron pada Judul --- */
@@ -297,7 +298,7 @@
                  <!-- Navigation for Desktop -->
                 <nav class="hidden md:flex space-x-8 text-white">
                     <a href="#hero-section" data-translate-key="navHome">Beranda</a>
-                    <a href="#about-section" data-translate-key="navAbout">Tentang</a>
+                    <a href="#about-section" data-translate-key="navAbout">Tentang Saya</a>
                     <a href="#project-section" data-translate-key="navProjects">Proyek</a>
                     <a href="#contact-section" data-translate-key="navContact">Kontak</a>
                 </nav>
@@ -314,7 +315,7 @@
         <!-- Mobile Navigation Menu (appears on hamburger click) -->
         <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-black/90 backdrop-blur-sm flex-col items-center justify-center text-2xl space-y-8 text-white z-40 hidden">
             <a href="#hero-section" class="mobile-link" data-translate-key="navHome">Beranda</a>
-            <a href="#about-section" class="mobile-link" data-translate-key="navAbout">Tentang</a>
+            <a href="#about-section" class="mobile-link" data-translate-key="navAbout">Tentang Saya</a>
             <a href="#project-section" class="mobile-link" data-translate-key="navProjects">Proyek</a>
             <a href="#contact-section" class="mobile-link" data-translate-key="navContact">Kontak</a>
         </div>
@@ -324,21 +325,21 @@
         <div id="home-view">
             <main id="hero-section" class="container relative mx-auto px-4 h-screen flex flex-col items-center justify-center">
                 <div class="text-center">
-                    <h1 class="animated-gradient-text text-4xl md:text-6xl lg:text-8xl font-black leading-tight mb-16" data-translate-key="heroTitle">
-                        Jelajahi Dimensi Baru
+                    <h1 class="animated-gradient-text text-4xl md:text-5xl lg:text-8xl font-black leading-tight mb-16" data-translate-key="heroTitle">
+                        Dimensi Baru, Kisah Pribadi Saya
                     </h1>
                     <a href="#timeline-section" class="pulsing-button bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105" data-translate-key="heroButton">
                         Mulai Petualangan
                     </a>
                 </div>
-                <p class="absolute bottom-12 left-0 right-0 px-4 text-gray-400 text-center text-lg italic max-w-2xl mx-auto" data-translate-key="heroQuote">"Jadilah cerdas yang mencerahkan, pintar yang membagikan ilmu, dan jenius yang menginspirasi perubahan."</p>
+                <p class="absolute bottom-12 left-0 right-0 px-4 text-gray-400 text-center text-lg italic max-w-2xl mx-auto" data-translate-key="heroQuote">"Jadilah pribadi cerdas yang mencerahkan, pintar yang membagikan ilmu, dan jenius yang mengilhami perubahan."</p>
             </main>
 
             <!-- Life Journey Timeline Section -->
             <section id="timeline-section" class="container mx-auto px-4 py-20">
                 <div class="w-full max-w-3xl mx-auto">
                     <h2 class="animated-gradient-text text-3xl md:text-5xl font-black text-center mb-16" data-translate-key="timelineTitle">
-                        Perjalanan Hidupku
+                        Perjalanan Hidup Saya
                     </h2>
                     <div class="relative wrap overflow-hidden p-10 h-full">
                         <div class="border-2-2 absolute border-opacity-20 border-cyan-700 h-full border" style="left: 50%"></div>
@@ -351,7 +352,7 @@
                             <div class="order-1 bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-xl w-5/12 px-6 py-4 timeline-card">
                                 <h3 class="mb-1 font-bold text-cyan-400 text-xl" data-translate-key="sdTitle">Sekolah Dasar</h3>
                                 <p class="text-sm font-medium text-gray-400 mb-2">MIS Manbaul Huda | 2015 - 2021</p>
-                                <p class="text-sm leading-snug tracking-wide text-gray-300" data-translate-key="sdDesc">Awal dari segalanya. Belajar membaca, menulis, dan bertemu teman-teman pertama yang tak terlupakan.</p>
+                                <p class="text-sm leading-snug tracking-wide text-gray-300" data-translate-key="sdDesc">Merupakan awal dari segalanya. Di sini saya belajar membaca, menulis, dan bertemu dengan teman-teman pertama yang tak terlupakan.</p>
                             </div>
                         </div>
                         <!-- Timeline Item 2 -->
@@ -362,8 +363,8 @@
                             </div>
                             <div class="order-1 bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-xl w-5/12 px-6 py-4 timeline-card">
                                 <h3 class="mb-1 font-bold text-cyan-400 text-xl" data-translate-key="smpTitle">Sekolah Menengah Pertama</h3>
-                                <p class="text-sm font-medium text-gray-400 mb-2">SMP 01 WIRADESA | 2021 - 2023</p>
-                                <p class="text-sm leading-snug tracking-wide text-gray-300" data-translate-key="smpDesc">Memasuki masa remaja, mencari jati diri, dan mulai memahami pelajaran yang lebih kompleks.</p>
+                                <p class="text-sm font-medium text-gray-400 mb-2">SMPN 01 WIRADESA | 2021 - 2023</p>
+                                <p class="text-sm leading-snug tracking-wide text-gray-300" data-translate-key="smpDesc">Pada jenjang ini, saya memasuki masa remaja, mulai mencari jati diri, dan belajar memahami pelajaran yang lebih kompleks.</p>
                             </div>
                         </div>
                         <!-- Timeline Item 3 -->
@@ -375,7 +376,7 @@
                             <div class="order-1 bg-gray-800/60 backdrop-blur-sm rounded-lg shadow-xl w-5/12 px-6 py-4 timeline-card">
                                 <h3 class="mb-1 font-bold text-cyan-400 text-xl" data-translate-key="smkTitle">Sekolah Menengah Kejuruan</h3>
                                 <p class="text-sm font-medium text-gray-400 mb-2">SMK MA'ARIF NU TIRTO</p>
-                                <p class="text-sm leading-snug tracking-wide text-gray-300" data-translate-key="smkDesc">Fokus pada keahlian, mempersiapkan diri untuk dunia kerja, dan menciptakan kenangan indah di akhir masa sekolah.</p>
+                                <p class="text-sm leading-snug tracking-wide text-gray-300" data-translate-key="smkDesc">Di sini saya fokus pada keahlian, mempersiapkan diri untuk dunia kerja, serta menciptakan kenangan indah di akhir masa sekolah.</p>
                             </div>
                         </div>
                     </div>
@@ -388,7 +389,7 @@
             <div class="w-full max-w-3xl">
                 <h2 class="animated-gradient-text text-3xl md:text-5xl font-black text-center mb-12" data-translate-key="aboutTitle">Tentang Saya</h2>
                 <div class="bg-gray-800/60 backdrop-blur-sm rounded-lg p-8 text-left content-entry-box">
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-4" data-translate-key="bioTitle">Biodata Diri</h3>
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4" data-translate-key="bioTitle">Data Diri</h3>
                     <ul class="list-none space-y-2 text-gray-300">
                         <li><strong data-translate-key="bioName">Nama:</strong> Ahmad Sabilul Khoil</li>
                         <li><strong data-translate-key="bioDob">Tempat, Tanggal Lahir:</strong> Pekalongan, 10 Januari 2008</li>
@@ -398,15 +399,15 @@
                     <h3 class="text-2xl font-bold text-cyan-400 mt-8 mb-4" data-translate-key="eduTitle">Riwayat Pendidikan</h3>
                     <ul class="list-none space-y-2 text-gray-300">
                         <li><strong>MI Gumawang</strong> (2015 - 2021)</li>
-                        <li><strong>SMP 01 Wiradesa</strong> (2021-2023)</li>
-                        <li data-translate-key="eduSmk"><strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer (2023-sekarang)</li>
+                        <li><strong>SMPN 01 Wiradesa</strong> (2021-2023)</li>
+                        <li data-translate-key="eduSmk"><strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer</li>
                     </ul>
                     <h3 class="text-2xl font-bold text-cyan-400 mt-8 mb-4" data-translate-key="expTitle">Pengalaman dan Minat</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li data-translate-key="exp1">Mendalami pendidikan agama Islam dan nilai-nilai disiplin sejak MI.</li>
-                        <li data-translate-key="exp2">Mempelajari toleransi antaragama di SMP.</li>
-                        <li data-translate-key="exp3">Fokus di bidang teknik jaringan komputer saat SMK.</li>
-                        <li data-translate-key="exp4">Hobi merakit komputer dan memecahkan masalah jaringan.</li>
+                        <li data-translate-key="exp1">Mendalami pendidikan agama Islam serta nilai-nilai kedisiplinan sejak jenjang MI.</li>
+                        <li data-translate-key="exp2">Mempelajari tentang toleransi antaragama pada jenjang SMP.</li>
+                        <li data-translate-key="exp3">Memfokuskan diri pada bidang teknik jaringan komputer saat menempuh pendidikan di SMK.</li>
+                        <li data-translate-key="exp4">Memiliki hobi merakit komputer dan memecahkan masalah terkait jaringan.</li>
                     </ul>
                 </div>
             </div>
@@ -491,50 +492,50 @@
             translations: {
                 pageTitle: { id: 'Selamat Datang di Dunia 3D', en: 'Welcome to the 3D World', jv: 'Sugeng Rawuh ing Jagad 3D' },
                 navHome: { id: 'Beranda', en: 'Home', jv: 'Wiwitan' },
-                navAbout: { id: 'Tentang', en: 'About', jv: 'Bab Kula' },
+                navAbout: { id: 'Tentang Saya', en: 'About Me', jv: 'Bab Kula' },
                 navProjects: { id: 'Proyek', en: 'Projects', jv: 'Ayahan Kula' },
                 navContact: { id: 'Kontak', en: 'Contact', jv: 'Sambetan' },
-                heroTitle: { id: 'Jelajahi Dimensi Baru', en: 'Explore New Dimensions', jv: 'Njajahi Dimensi Enggal' },
+                heroTitle: { id: 'Dimensi Baru, Kisah Pribadi Saya', en: 'New Dimensions, My Personal Story', jv: 'Dimensi Enggal, Cariyos Pribadi Kula' },
                 heroButton: { id: 'Mulai Petualangan', en: 'Start the Adventure', jv: 'Miwiti Lelampahan' },
-                heroQuote: { id: '"Jadilah cerdas yang mencerahkan, pintar yang membagikan ilmu, dan jenius yang menginspirasi perubahan."', en: '"Be the smart one who enlightens, the clever one who shares knowledge, and the genius who inspires change."', jv: '"Dadosa tiyang pinter ingkang madhangi, tiyang wasis ingkang ngedum ngelmu, lan tiyang jenius ingkang nginspirasi ewah-ewahan."' },
-                timelineTitle: { id: 'Perjalanan Hidupku', en: 'My Life\'s Journey', jv: 'Lelampahan Gesang Kula' },
+                heroQuote: { id: '"Jadilah pribadi cerdas yang mencerahkan, pintar yang membagikan ilmu, dan jenius yang mengilhami perubahan."', en: '"Be the smart one who enlightens, the clever one who shares knowledge, and the genius who inspires change."', jv: '"Dadosa tiyang pinter ingkang madhangi, tiyang wasis ingkang ngedum ngelmu, lan tiyang jenius ingkang nginspirasi ewah-ewahan."' },
+                timelineTitle: { id: 'Perjalanan Hidup Saya', en: 'My Life\'s Journey', jv: 'Lelampahan Gesang Kula' },
                 sdAbbr: { id: 'SD', en: 'ES', jv: 'SD' },
                 sdTitle: { id: 'Sekolah Dasar', en: 'Elementary School', jv: 'Sekolah Dhasar' },
-                sdDesc: { id: 'Awal dari segalanya. Belajar membaca, menulis, dan bertemu teman-teman pertama yang tak terlupakan.', en: 'The beginning of everything. Learning to read, write, and meeting unforgettable first friends.', jv: 'Wiwitaning sedaya. Sinau maos, nyerat, lan kepanggih rencang-rencang kapisan ingkang mboten saged dipunsupekaken.' },
+                sdDesc: { id: 'Merupakan awal dari segalanya. Di sini saya belajar membaca, menulis, dan bertemu dengan teman-teman pertama yang tak terlupakan.', en: 'The beginning of everything. Learning to read, write, and meeting unforgettable first friends.', jv: 'Wiwitaning sedaya. Sinau maos, nyerat, lan kepanggih rencang-rencang kapisan ingkang mboten saged dipunsupekaken.' },
                 smpAbbr: { id: 'SMP', en: 'JHS', jv: 'SMP' },
                 smpTitle: { id: 'Sekolah Menengah Pertama', en: 'Junior High School', jv: 'Sekolah Menengah Pertama' },
-                smpDesc: { id: 'Memasuki masa remaja, mencari jati diri, dan mulai memahami pelajaran yang lebih kompleks.', en: 'Entering adolescence, searching for identity, and starting to understand more complex subjects.', jv: 'Mlebet ing mangsa remaja, madosi jatidhiri, lan wiwit mangertosi piwulangan ingkang langkung rumit.' },
+                smpDesc: { id: 'Pada jenjang ini, saya memasuki masa remaja, mulai mencari jati diri, dan belajar memahami pelajaran yang lebih kompleks.', en: 'Entering adolescence, searching for identity, and starting to understand more complex subjects.', jv: 'Mlebet ing mangsa remaja, madosi jatidhiri, lan wiwit mangertosi piwulangan ingkang langkung rumit.' },
                 smkAbbr: { id: 'SMK', en: 'VHS', jv: 'SMK' },
                 smkTitle: { id: 'Sekolah Menengah Kejuruan', en: 'Vocational High School', jv: 'Sekolah Menengah Kejuruan' },
-                smkDesc: { id: 'Fokus pada keahlian, mempersiapkan diri untuk dunia kerja, dan menciptakan kenangan indah di akhir masa sekolah.', en: 'Focusing on skills, preparing for the world of work, and creating beautiful memories at the end of school.', jv: 'Fokus dhateng keahlian, nyawisaken dhiri kagem jagad pakaryan, lan ngripta kenangan endah ing pungkasaning mangsa sekolah.' },
+                smkDesc: { id: 'Di sini saya fokus pada keahlian, mempersiapkan diri untuk dunia kerja, serta menciptakan kenangan indah di akhir masa sekolah.', en: 'Focusing on skills, preparing for the world of work, and creating beautiful memories at the end of school.', jv: 'Fokus dhateng keahlian, nyawisaken dhiri kagem jagad pakaryan, lan ngripta kenangan endah ing pungkasaning mangsa sekolah.' },
                 aboutTitle: { id: 'Tentang Saya', en: 'About Me', jv: 'Babagan Kula' },
-                bioTitle: { id: 'Biodata Diri', en: 'Personal Bio', jv: 'Dhata Pribadi' },
+                bioTitle: { id: 'Data Diri', en: 'Personal Data', jv: 'Dhata Pribadi' },
                 bioName: { id: 'Nama:', en: 'Name:', jv: 'Asma:' },
                 bioDob: { id: 'Tempat, Tanggal Lahir:', en: 'Place, Date of Birth:', jv: 'Papan, Wanci Lair:' },
                 bioAddress: { id: 'Alamat:', en: 'Address:', jv: 'Papan Dunung:' },
                 bioReligion: { id: 'Agama:', en: 'Religion:', jv: 'Agami:' },
                 eduTitle: { id: 'Riwayat Pendidikan', en: 'Education History', jv: 'Riwayat Pawiyatan' },
-                eduSmk: { id: "<strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer (2023-sekarang)", en: "<strong>SMK Ma'arif NU Tirto</strong>, Major in Computer Network Engineering (2023-present)", jv: "<strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer (2023-sapunika)" },
+                eduSmk: { id: "<strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer", en: "<strong>SMK Ma'arif NU Tirto</strong>, Major in Computer Network Engineering", jv: "<strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer" },
                 expTitle: { id: 'Pengalaman dan Minat', en: 'Experience and Interests', jv: 'Patemon lan Kesenengan' },
-                exp1: { id: 'Mendalami pendidikan agama Islam dan nilai-nilai disiplin sejak MI.', en: 'Deepening Islamic religious education and disciplinary values since elementary school.', jv: 'Nglampahi pendidikan agami Islam lan nilai-nilai disiplin wiwit MI.' },
-                exp2: { id: 'Mempelajari toleransi antaragama di SMP.', en: 'Learning about inter-religious tolerance in junior high.', jv: 'Sinau toleransi antaragami wonten ing SMP.' },
-                exp3: { id: 'Fokus di bidang teknik jaringan komputer saat SMK.', en: 'Focusing on the field of computer network engineering during vocational high school.', jv: 'Fokus ing babagan teknik jaringan komputer nalika wonten ing SMK.' },
-                exp4: { id: 'Hobi merakit komputer dan memecahkan masalah jaringan.', en: 'Hobby of assembling computers and solving network problems.', jv: 'Gadhah kesenengan ngrakit komputer lan mrantasi prekawis jaringan.' },
+                exp1: { id: 'Mendalami pendidikan agama Islam serta nilai-nilai kedisiplinan sejak jenjang MI.', en: 'Deepening Islamic religious education and disciplinary values since elementary school.', jv: 'Nglampahi pendidikan agami Islam lan nilai-nilai disiplin wiwit MI.' },
+                exp2: { id: 'Mempelajari tentang toleransi antaragama pada jenjang SMP.', en: 'Learning about inter-religious tolerance in junior high.', jv: 'Sinau toleransi antaragami wonten ing SMP.' },
+                exp3: { id: 'Memfokuskan diri pada bidang teknik jaringan komputer saat menempuh pendidikan di SMK.', en: 'Focusing on the field of computer network engineering during vocational high school.', jv: 'Fokus ing babagan teknik jaringan komputer nalika wonten ing SMK.' },
+                exp4: { id: 'Memiliki hobi merakit komputer dan memecahkan masalah terkait jaringan.', en: 'Hobby of assembling computers and solving network problems.', jv: 'Gadhah kesenengan ngrakit komputer lan mrantasi prekawis jaringan.' },
                 projectsTitle: { id: 'Proyek Saya', en: 'My Projects', jv: 'Ayahan Kula' },
-                proj1Title: { id: 'Merakit Komputer', en: 'Computer Assembly', jv: 'Ngrakit Komputer' },
-                proj1Desc: { id: 'Sebuah proyek pribadi untuk membangun PC dari awal, fokus pada performa dan estetika.', en: 'A personal project to build a PC from scratch, focusing on performance and aesthetics.', jv: 'Setunggaling ayahan pribadi kagem mbangun PC saking wiwitan, fokus dhateng performa lan kaendahan.' },
-                proj2Title: { id: 'Jaringan Lab Sekolah', en: 'School Lab Network', jv: 'Jaringan Lab Sekolah' },
-                proj2Desc: { id: 'Membantu mengkonfigurasi dan memecahkan masalah jaringan di laboratorium komputer sekolah.', en: 'Helped configure and troubleshoot the network in the school\'s computer laboratory.', jv: 'Ngrehaken konfigurasi lan mrantasi prekawis jaringan wonten ing laboratorium komputer sekolah.' },
-                proj3Title: { id: 'Desain Web Portofolio', en: 'Portfolio Web Design', jv: 'Desain Web Portofolio' },
-                proj3Desc: { id: 'Proyek yang sedang Anda lihat sekarang! Dibuat dengan HTML, Tailwind CSS, dan Three.js.', en: 'The project you are looking at right now! Created with HTML, Tailwind CSS, and Three.js.', jv: 'Ayahan ingkang saweg panjenengan pirsani! Dipundamel ngagem HTML, Tailwind CSS, lan Three.js.' },
-                proj4Title: { id: 'Proyek Matematika', en: 'Math Project', jv: 'Ayahan Matematika' },
-                proj4Desc: { id: 'Halaman interaktif untuk visualisasi konsep matematika. Buka di tab baru.', en: 'Interactive page for visualizing math concepts. Opens in a new tab.', jv: 'Kaca interaktif kagem visualisasi konsep matematika. Kabikak ing tab enggal.' },
-                modal1Title: { id: "Merakit Komputer Gaming", en: "Building a Gaming Computer", jv: "Ngrakit Komputer Gaming" },
-                modal1Desc: { id: "Proyek ini adalah tentang membangun PC gaming dari nol. Saya memilih setiap komponen, mulai dari prosesor hingga kartu grafis, untuk mendapatkan performa maksimal dalam budget yang ditentukan. Saya juga fokus pada manajemen kabel dan pencahayaan RGB untuk estetika.", en: "This project is about building a gaming PC from scratch. I chose every component, from the processor to the graphics card, to get maximum performance within a set budget. I also focused on cable management and RGB lighting for aesthetics.", jv: "Ayahan menika babagan mbangun PC gaming saking wiwitan. Kula milih saben komponen, saking prosesor ngantos kertu grafis, kagem pikantuk performa maksimal miturut anggaran. Kula ugi fokus dhateng manajemen kabel lan pepadhang RGB kagem kaendahan." },
-                modal2Title: { id: "Konfigurasi Jaringan Lab", en: "Lab Network Configuration", jv: "Konfigurasi Jaringan Lab" },
-                modal2Desc: { id: "Dalam proyek sekolah ini, saya bertanggung jawab untuk merancang dan mengkonfigurasi topologi jaringan untuk laboratorium komputer baru. Ini termasuk pengaturan router, switch, dan memastikan setiap komputer dapat terhubung ke internet dan server lokal dengan aman dan efisien.", en: "In this school project, I was responsible for designing and configuring the network topology for a new computer laboratory. This included setting up routers, switches, and ensuring every computer could connect to the internet and local servers securely and efficiently.", jv: "Wonten ing ayahan sekolah menika, kula dipunparingi tanggel jawab ngrancang lan ngkonfigurasi topologi jaringan kagem laboratorium komputer enggal. Kalebet ngatur router, switch, lan mesthekaken saben komputer saged nyambung dhateng internet lan server lokal kanthi aman lan efisien." },
-                modal3Title: { id: "Website Portofolio Interaktif", en: "Interactive Portfolio Website", jv: "Website Portofolio Interaktif" },
-                modal3Desc: { id: "Ini adalah proyek yang sedang Anda lihat! Sebuah portofolio pribadi yang saya bangun dari awal menggunakan HTML, Tailwind CSS untuk styling modern, dan Three.js untuk menciptakan semua efek 3D yang interaktif, termasuk latar belakang yang memukau.", en: "This is the project you are currently viewing! A personal portfolio that I built from scratch using HTML, Tailwind CSS for modern styling, and Three.js to create all the interactive 3D effects, including the stunning background.", jv: "Menika ayahan ingkang saweg panjenengan pirsani! Setunggaling portofolio pribadi ingkang kula bangun saking wiwitan ngagem HTML, Tailwind CSS kagem styling modern, lan Three.js kagem ngripta sedaya efek 3D interaktif, kalebet latar wingking ingkang nengsemaken." },
+                proj1Title: { id: 'Perakitan Komputer', en: 'Computer Assembly', jv: 'Ngrakit Komputer' },
+                proj1Desc: { id: 'Proyek pribadi untuk merakit sebuah PC dari awal dengan fokus pada performa dan estetika.', en: 'A personal project to build a PC from scratch, focusing on performance and aesthetics.', jv: 'Setunggaling ayahan pribadi kagem mbangun PC saking wiwitan, fokus dhateng performa lan kaendahan.' },
+                proj2Title: { id: 'Jaringan Laboratorium Sekolah', en: 'School Laboratory Network', jv: 'Jaringan Laboratorium Sekolah' },
+                proj2Desc: { id: 'Turut serta dalam konfigurasi dan pemecahan masalah jaringan di laboratorium komputer sekolah.', en: 'Participated in configuring and troubleshooting the network in the school\'s computer laboratory.', jv: 'Ngrehaken konfigurasi lan mrantasi prekawis jaringan wonten ing laboratorium komputer sekolah.' },
+                proj3Title: { id: 'Desain Web Portofolio Interaktif', en: 'Interactive Portfolio Web Design', jv: 'Desain Web Portofolio Interaktif' },
+                proj3Desc: { id: 'Proyek yang sedang Anda lihat saat ini. Dibangun menggunakan HTML, Tailwind CSS, dan Three.js.', en: 'The project you are looking at right now. Built with HTML, Tailwind CSS, and Three.js.', jv: 'Ayahan ingkang saweg panjenengan pirsani! Dipundamel ngagem HTML, Tailwind CSS, lan Three.js.' },
+                proj4Title: { id: 'Proyek Visualisasi Matematika', en: 'Math Visualization Project', jv: 'Ayahan Visualisasi Matematika' },
+                proj4Desc: { id: 'Sebuah halaman interaktif untuk memvisualisasikan berbagai konsep matematika. Akan terbuka di tab baru.', en: 'An interactive page to visualize various mathematical concepts. Opens in a new tab.', jv: 'Kaca interaktif kagem visualisasi konsep matematika. Kabikak ing tab enggal.' },
+                modal1Title: { id: "Proyek Perakitan Komputer Gaming", en: "Gaming Computer Assembly Project", jv: "Proyek Perakitan Komputer Gaming" },
+                modal1Desc: { id: "Proyek ini berfokus pada perakitan PC gaming dari awal. Setiap komponen, mulai dari prosesor hingga kartu grafis, dipilih secara saksama untuk mendapatkan performa maksimal sesuai anggaran. Manajemen kabel dan pencahayaan RGB juga menjadi fokus untuk menunjang nilai estetika.", en: "This project focuses on building a gaming PC from scratch. Each component, from the processor to the graphics card, was carefully selected to achieve maximum performance within the budget. Cable management and RGB lighting were also a focus to enhance aesthetics.", jv: "Ayahan menika fokus ing perakitan PC gaming saking wiwitan. Saben komponen, saking prosesor ngantos kertu grafis, dipunpilih kanthi tliti kagem pikantuk performa maksimal miturut anggaran. Manajemen kabel lan pepadhang RGB ugi dados fokus kagem njagi nilai kaendahan." },
+                modal2Title: { id: "Proyek Konfigurasi Jaringan Laboratorium", en: "Laboratory Network Configuration Project", jv: "Proyek Konfigurasi Jaringan Laboratorium" },
+                modal2Desc: { id: "Dalam proyek sekolah ini, saya bertanggung jawab merancang dan mengonfigurasi topologi jaringan untuk laboratorium komputer baru. Tugas ini mencakup pengaturan router, switch, serta memastikan setiap komputer dapat terhubung ke internet dan server lokal secara aman dan efisien.", en: "In this school project, I was responsible for designing and configuring the network topology for a new computer laboratory. This task included setting up routers, switches, and ensuring every computer could connect to the internet and local servers securely and efficiently.", jv: "Wonten ing ayahan sekolah menika, kula dipunparingi tanggel jawab ngrancang lan ngkonfigurasi topologi jaringan kagem laboratorium komputer enggal. Tugas menika kalebet ngatur router, switch, saha mesthekaken saben komputer saged nyambung dhateng internet lan server lokal kanthi aman lan efisien." },
+                modal3Title: { id: "Proyek Website Portofolio Interaktif", en: "Interactive Portfolio Website Project", jv: "Proyek Website Portofolio Interaktif" },
+                modal3Desc: { id: "Ini adalah proyek yang sedang Anda lihat saat ini. Sebuah portofolio pribadi yang saya bangun dari awal menggunakan HTML, Tailwind CSS untuk gaya modern, dan Three.js untuk menciptakan semua efek 3D yang interaktif, termasuk latar belakang visualnya.", en: "This is the project you are currently viewing. A personal portfolio that I built from scratch using HTML, Tailwind CSS for modern styling, and Three.js to create all the interactive 3D effects, including its visual background.", jv: "Menika ayahan ingkang saweg panjenengan pirsani. Setunggaling portofolio pribadi ingkang kula bangun saking wiwitan ngagem HTML, Tailwind CSS kagem gaya modern, lan Three.js kagem ngripta sedaya efek 3D ingkang interaktif, kalebet latar wingking visualipun." },
                 contactTitle: { id: 'Animasi 3D', en: '3D Animation', jv: 'Animasi 3D' },
                 contactDesc: { id: 'Halaman ini sedang dalam pengembangan.', en: 'This page is under development.', jv: 'Kaca menika saweg dipunbangun.' },
                 footerQuote: { id: '"TUHAN adalah terangku dan keselamatanku, kepada siapakah aku harus takut? TUHAN adalah benteng hidupku, terhadap siapakah aku harus gemetar?"', en: '"The LORD is my light and my salvation—whom shall I fear? The LORD is the stronghold of my life—of whom shall I be afraid?"', jv: '"Gusti punika pepadhang saha karahayon kawula, sinten ingkang kedah kawula ajrihi? Gusti punika beteng gesang kawula, dhateng sinten kawula kedah gemeter?"' },
@@ -798,7 +799,10 @@
 
             ui.adventureButton.addEventListener('click', (e) => {
                 e.preventDefault();
-                ui.timelineSection.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.content-wrapper').scrollTo({
+                    top: ui.timelineSection.offsetTop,
+                    behavior: 'smooth'
+                });
             });
 
             const observer = new IntersectionObserver((entries) => {
