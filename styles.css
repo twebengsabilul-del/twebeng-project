@@ -1,0 +1,475 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(135deg, #2a2a72, #009ffd); 
+    position: relative;
+    overflow: hidden; 
+}
+
+.content {
+    text-align: center;
+    color: white;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+     position: relative; 
+    z-index: 2; 
+}
+
+.icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeInIcons 2s 1s forwards;
+}
+
+.icon {
+    font-size: 2.5rem;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textZoom {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInIcons {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(-45deg, #2a2a72, #009ffd, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Animasi gradasi bergerak */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Partikel background */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.2;
+    animation: moveParticles 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveParticles {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.decor {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 200%;
+  height: 200px;
+  background: rgba(255,255,255,0.1); /* warna putih transparan */
+  border-radius: 43%;
+  animation: waveSlide 40s linear infinite;
+}
+
+@keyframes waveSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* menutup seluruh layar */
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.05;  /* tipis, biar nggak terlalu rame */
+  z-index: 1; /* di atas dekorasi, tapi di bawah tulisan */
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2; /
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #00f, 0 0 10px #0ff, 0 0 20px #0ff; }
+  to   { text-shadow: 0 0 10px #0ff, 0 0 20px #00f, 0 0 40px #0ff; }
+}
+
+/* JUDUL BERSIH – tanpa typing */
+.title{
+  position: relative;
+  z-index: 2;             /* di atas dekorasi */
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: .5px;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: fadeSlide 1.2s ease-out forwards;
+}
+
+@keyframes fadeSlide{
+  from{ opacity:0; transform: translateY(22px); }
+  to  { opacity:1; transform: translateY(0); }
+}
+
+/* OPSIONAL: tambah efek kilau lembut */
+.title.shine{
+  background: linear-gradient(90deg,#ffffff,#c9f2ff,#ffffff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    fadeSlide 1.2s ease-out forwards,
+    shine 6s linear infinite 1.2s;
+}
+@keyframes shine{
+  from{ background-position: 0% 50%; }
+  to  { background-position: 100% 50%; }
+}
+
+.icons .icon {
+  font-size: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: iconBounce 0.8s ease-out forwards;
+}
+
+/* delay biar muncul bergantian */
+.icons .icon:nth-child(1) { animation-delay: 0.5s; }
+.icons .icon:nth-child(2) { animation-delay: 0.9s; }
+.icons .icon:nth-child(3) { animation-delay: 1.3s; }
+
+@keyframes iconBounce {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.8); }
+  60%  { opacity: 1; transform: translateY(-8px) scale(1.1); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif; 
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00dbde, #2575fc, #6a11cb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: fadeSlide 1.2s ease-out forwards;
+}
+
+@keyframes fadeSlide {
+  from { opacity:0; transform: translateY(22px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* Default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #2a2a72, #009ffd); 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* GO button styles */
+.go-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #00dbde;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.go-button:hover {
+  background-color: #2575fc;
+  transform: translateY(5px);
+}
+
+/* Next Page */
+.next-page {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+/* Smooth Transition for the Next Page */
+.next-page.show {
+  display: block;
+  transform: translateY(20px);
+  opacity: 1;
+}
+
+/* Halaman Baru */
+.next-page {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.next-page.show {
+  display: block;
+  transform: translateY(20px);
+  opacity: 1;
+}
+
+/* Pastikan .content menggunakan flex dan mengatur arah vertikal */
+.content {
+  display: flex;
+  flex-direction: column; /* Menyusun elemen secara vertikal */
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: fadeIn 1.5s ease-out forwards;
+  gap: 20px; /* Menambahkan jarak antara judul dan tombol */
+}
+
+/* Tombol GO */
+.go-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #00dbde;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.go-button:hover {
+  background-color: #2575fc;
+  transform: translateY(5px);
+}
+
+body {
+  background-color: #f0f8ff; /* warna langit */
+}
+
+p {
+  font-size: 18px;
+  color: #333;
+}
+
+button {
+    background-color: #00bcd4; /* Warna default */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transisi warna dan efek transform */
+}
+
+button:hover {
+    background-color: #0097a7; /* Warna saat di-hover */
+    transform: scale(1.1); /* Membesar sedikit saat di-hover */
+}
+
+h1 {
+    color: #4caf50;
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+h1:hover {
+    color: #ff5722; /* Ubah warna teks saat dihover */
+    transform: scale(1.1); /* Membesar sedikit saat dihover */
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00bcd4;
+    transition: transform 0.5s ease-in-out;
+}
+
+h1:hover {
+    transform: scale(1.1); /* Membesarkan sedikit saat dihover */
+}
+
+
+/* Styling untuk teks "Visi Kelompok 2" */
+.visi-text {
+  font-size: 1.5rem; /* Ukuran teks */
+  color: white; /* Warna teks */
+  margin-top: 20px; /* Jarak antara tombol GO dan teks */
+  font-family: 'Exo 2', sans-serif;
+  opacity: 0; /* Teks mulai dengan tidak terlihat */
+  animation: fadeInText 2s 1s forwards; /* Efek animasi fade-in dengan delay */
+  text-align: center; /* Menyejajarkan teks ke tengah */
+  z-index: 3; /* Pastikan teks di atas tombol GO */
+}
+
+/* Animasi fade-in untuk teks visi */
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Teks muncul dari bawah */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Teks berhenti di posisi normal */
+  }
+}
+
+
+
+// ... kode CSS yang sudah ada
+    .go-button:hover {
+      background-color: #0097a7;
+    }
+
+    /* --- GANTI BLOK INI --- */
+    .visi-text {
+      position: fixed; /* Mengunci posisi elemen relatif terhadap layar */
+      bottom: 30px; /* Jarak dari bawah layar */
+      left: 0;
+      right: 0;
+      padding: 0 20px; /* Memberi sedikit jarak dari tepi layar kiri dan kanan */
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Exo 2', sans-serif; /* Menggunakan font yang lebih mudah dibaca untuk kutipan */
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0; /* Awalnya tidak terlihat */
+      transition: opacity 2s ease; /* Transisi untuk fade-in */
+      pointer-events: none; /* Agar tidak mengganggu tombol di atasnya */
+    }
+    /* --- SELESAI MENGGANTI BLOK --- */
+  </style>
+
+</head>
+<body>
+// ... sisa kode

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team 2 - Entrance</title>
+  
+  <!-- Link ke Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset dasar */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Exo 2', sans-serif;
+      background-color: #010314; /* Warna dasar ruang angkasa gelap */
+      overflow: hidden;
+    }
+
+    /* Canvas untuk latar belakang partikel */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Wrapper untuk transisi halaman */
+    .page-wrapper {
+      position: relative;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      opacity: 1;
+      transition: opacity 0.7s ease-out;
+    }
+
+    .content-container {
+      /* Animasi utama sekarang diatur per elemen untuk efek stagger */
+    }
+
+    /* Judul dengan efek Glitch */
+    .glitch-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: #fff;
+      position: relative;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0; /* Mulai dari transparan */
+      animation: glitch-scan 4s linear infinite, fadeIn 2s ease-out 0.5s forwards;
+    }
+
+    .glitch-title::before,
+    .glitch-title::after {
+      content: 'Welcome to Team 2';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #010314;
+      overflow: hidden;
+    }
+
+    .glitch-title::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      animation: glitch-anim-1 2s linear infinite reverse;
+    }
+
+    .glitch-title::after {
+      left: -2px;
+      text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+      animation: glitch-anim-2 2s linear infinite reverse;
+    }
+    
+    /* Styling untuk teks visi */
+    .vision-text {
+      font-size: 1.2rem;
+      font-family: 'Exo 2', sans-serif;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 30px; /* Jarak dari tombol ENTER */
+      letter-spacing: 1px;
+      font-style: italic;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      opacity: 0; /* Mulai dari transparan */
+      animation: slideUpFade 1.5s ease-out 1.5s forwards; /* [DIPERBARUI] Muncul setelah tombol */
+    }
+    
+    /* Tombol Enter Futuristik */
+    .enter-button {
+      display: inline-block;
+      margin-top: 30px; /* Jarak dari judul */
+      padding: 15px 40px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00fff9;
+      text-decoration: none;
+      border: 2px solid #00fff9;
+      border-radius: 5px;
+      background: transparent;
+      text-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9;
+      box-shadow: 0 0 20px 0 rgba(0, 255, 249, 0.5), inset 0 0 10px 0 rgba(0, 255, 249, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      opacity: 0; /* Mulai dari transparan */
+      animation: slideUpFade 1.5s ease-out 1s forwards; /* [DIPERBARUI] Muncul setelah judul */
+    }
+
+    .enter-button:hover {
+      background: rgba(0, 255, 249, 0.1);
+      color: #fff;
+      text-shadow: 0 0 15px #fff;
+      box-shadow: 0 0 30px 0 rgba(0, 255, 249, 0.8), inset 0 0 15px 0 rgba(0, 255, 249, 0.5);
+    }
+    
+    /* Animasi Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Keyframes untuk visi dan tombol */
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glitch-anim-1 {
+      0%, 100% { clip-path: inset(55% 0 21% 0); }
+      25% { clip-path: inset(0 0 100% 0); }
+      50% { clip-path: inset(23% 0 44% 0); }
+      75% { clip-path: inset(80% 0 0 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+      0%, 100% { clip-path: inset(79% 0 1% 0); }
+      25% { clip-path: inset(28% 0 63% 0); }
+      50% { clip-path: inset(53% 0 7% 0); }
+      75% { clip-path: inset(13% 0 81% 0); }
+    }
+    
+    @keyframes glitch-scan {
+      0%, 100% { height: 100%; }
+      50% { height: 98%; }
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Latar belakang partikel -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Wrapper untuk transisi halaman -->
+  <div class="page-wrapper" id="pageWrapper">
+    <div class="content-container">
+      <h1 class="glitch-title">Welcome to Team 2</h1>
+      <!-- [DIPERBARUI] Urutan elemen diubah -->
+      <a href="halaman-baru-tiga.html" class="enter-button transition-link">ENTER</a>
+      <p class="vision-text">"Berjuang dengan tekad baja, membuktikan bahwa satu orang pun mampu meraih prestasi luar biasa."</p>
+    </div>
+  </div>
+
+  <script>
+    // Script untuk Latar Belakang Partikel
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray;
+
+    class Particle {
+      constructor(x, y, directionX, directionY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        if (this.x > canvas.width || this.x < 0) {
+          this.directionX = -this.directionX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.directionY = -this.directionY;
+        }
+        this.x += this.directionX;
+        this.y += this.directionY;
+        this.draw();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      let numberOfParticles = (canvas.height * canvas.width) / 9000;
+      for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 2) + 1;
+        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let directionX = (Math.random() * 0.4) - 0.2;
+        let directionY = (Math.random() * 0.4) - 0.2;
+        let color = 'rgba(0, 255, 249, 0.5)';
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+      }
+    }
+    
+    window.addEventListener('resize', () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      init();
+    });
+
+    init();
+    animate();
+
+   // ... setelah fungsi animate()
+
+    init();
+    animate();
+
+    // Script untuk Transisi Halaman
+    document.querySelectorAll('.transition-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const destinationUrl = new URL(this.getAttribute('href'), window.location.href).href;
+        
+        // [KEMBALIKAN KE VERSI SEMULA] Memicu transisi fade-out
+        document.getElementById('pageWrapper').style.opacity = "0";
+        
+        setTimeout(() => {
+          window.location.assign(destinationUrl);
+        }, 700);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kartu 3D Interaktif</title>
+<style>
+  /* Reset dan dasar */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Kontainer kartu */
+  .card-container {
+    perspective: 1000px;
+    width: 320px;
+    max-width: 90vw;
+    height: 420px;
+    position: relative;
+  }
+
+  /* Kartu utama */
+  .card {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: transparent;
+    box-shadow:
+      0 8px 20px rgba(0,0,0,0.3),
+      inset 0 0 15px rgba(255,255,255,0.1);
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform: scale(1) rotateX(0deg) rotateY(0deg);
+  }
+
+  /* Efek Aurora multi-warna yang hidup dan bersinar */
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 32px;
+    background:
+      conic-gradient(
+        from 0deg,
+        #ff006e,
+        #8338ec,
+        #3a86ff,
+        #06ffa5,
+        #ffbe0b,
+        #fb5607,
+        #ff006e
+      );
+    background-size: 200% 200%;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(14px);
+    animation: auroraRotate 6s linear infinite;
+    transition: opacity 0.5s ease;
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 28px;
+    background:
+      conic-gradient(
+        from 180deg,
+        #ff3c78,
+        #7f00ff,
+        #00d2ff,
+        #00ff94,
+        #fff500,
+        #ff6f00,
+        #ff3c78
+      );
+    background-size: 200% 200%;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(10px);
+    animation: auroraRotateReverse 8s linear infinite;
+    transition: opacity 0.5s ease;
+  }
+
+  @keyframes auroraRotate {
+    0% {
+      background-position: 0% 50%;
+      transform: rotate(0deg) scale(1);
+    }
+    100% {
+      background-position: 100% 50%;
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes auroraRotateReverse {
+    0% {
+      background-position: 100% 50%;
+      transform: rotate(0deg) scale(1);
+    }
+    100% {
+      background-position: 0% 50%;
+      transform: rotate(-360deg) scale(1);
+    }
+  }
+
+  /* Aurora aktif saat hover */
+  .card.hovered::before {
+    opacity: 0.95;
+  }
+
+  .card.hovered::after {
+    opacity: 0.75;
+  }
+
+  /* Efek glow tambahan saat hover dengan multi-warna menyala */
+  .card.hovered {
+    box-shadow:
+      0 12px 30px rgba(255,0,110,0.7),
+      0 0 60px 25px rgba(131,56,236,0.6),
+      0 0 120px 40px rgba(58,134,255,0.6),
+      0 0 160px 50px rgba(6,255,165,0.5),
+      inset 0 0 40px rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.85);
+  }
+
+  /* Foto di dalam kartu */
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    pointer-events: none;
+    user-select: none;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  /* Overlay untuk informasi kartu */
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 18px 18px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .card.hovered .card-overlay {
+    transform: translateY(0);
+  }
+
+  .card-overlay h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .card-overlay p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  /* Zoom dengan transisi mulus masuk dan keluar */
+  .card.zoomed {
+    transform: scale(1.1);
+  }
+
+  /* Responsif */
+  @media (max-width: 400px) {
+    .card-container {
+      width: 260px;
+      height: 340px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="card-container" aria-label="Kartu 3D interaktif">
+  <div class="card" tabindex="0" role="button" aria-pressed="false">
+    <img src="fototwebeng.jpg" alt="Foto profil pengguna dengan latar belakang profesional" />
+
+    <div class="card-overlay">
+      <h3>AHMAD SABILUL KHOIL</h3>
+      <p>XI TJK 2</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const card = document.querySelector('.card');
+    const container = document.querySelector('.card-container');
+
+    // Fungsi untuk menghitung rotasi berdasarkan posisi kursor
+    function handleMove(e) {
+      const rect = card.getBoundingClientRect();
+      const cardX = rect.left + rect.width / 2;
+      const cardY = rect.top + rect.height / 2;
+
+      const x = e.clientX - cardX;
+      const y = e.clientY - cardY;
+
+      const maxRotate = 15;
+      const rotateX = (-y / (rect.height / 2)) * maxRotate;
+      const rotateY = (x / (rect.width / 2)) * maxRotate;
+
+      if(card.classList.contains('zoomed')) {
+        card.style.transform = `scale(1.1) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      } else {
+        card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      }
+    }
+
+    function resetTransform() {
+      if(card.classList.contains('zoomed')) {
+        card.style.transform = 'scale(1.1) rotateX(0deg) rotateY(0deg)';
+      } else {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      }
+    }
+
+    function handleMouseEnter() {
+      card.classList.add('hovered');
+    }
+
+    function handleMouseLeave() {
+      card.classList.remove('hovered');
+      card.classList.remove('zoomed');
+      resetTransform();
+    }
+
+    // Zoom toggle dengan transisi mulus
+    function handleClick() {
+      if(card.classList.contains('zoomed')) {
+        card.classList.remove('zoomed');
+        resetTransform();
+      } else {
+        card.classList.add('zoomed');
+        resetTransform();
+      }
+    }
+
+    // Event listeners
+    container.addEventListener('mousemove', handleMove);
+    container.addEventListener('mouseenter', handleMouseEnter);
+    container.addEventListener('mouseleave', handleMouseLeave);
+    card.addEventListener('click', handleClick);
+
+    // Keyboard support
+    card.addEventListener('focus', () => {
+      card.classList.add('hovered');
+    });
+    
+    card.addEventListener('blur', () => {
+      card.classList.remove('hovered');
+      card.classList.remove('zoomed');
+      resetTransform();
+    });
+    
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleClick();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tombol di Bawah Halaman</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+    .btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(37, 117, 252, 0.6);
+      transition: background 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      z-index: 1000;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #2575fc, #6a11cb);
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 6px 20px rgba(37, 117, 252, 0.8);
+    }
+    .btn:active {
+      transform: translateX(-50%) scale(0.95);
+      box-shadow: 0 3px 10px rgba(37, 117, 252, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Konten halaman bisa di sini -->
+
+  <button class="btn" onclick="window.location.href='halaman-baru-empat.html'">Ke Halaman 4</button>
+</html>
