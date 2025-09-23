@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -390,12 +389,24 @@
                 <h2 class="animated-gradient-text text-3xl md:text-5xl font-black text-center mb-12" data-translate-key="aboutTitle">Tentang Saya</h2>
                 <div class="bg-gray-800/60 backdrop-blur-sm rounded-lg p-8 text-left content-entry-box">
                     <h3 class="text-2xl font-bold text-cyan-400 mb-4" data-translate-key="bioTitle">Data Diri</h3>
-                    <ul class="list-none space-y-2 text-gray-300">
-                        <li><strong data-translate-key="bioName">Nama:</strong> Ahmad Sabilul Khoil</li>
-                        <li><strong data-translate-key="bioDob">Tempat, Tanggal Lahir:</strong> Pekalongan, 10 Januari 2008</li>
-                        <li><strong data-translate-key="bioAddress">Alamat:</strong> Jl. Raya Pantura No.186, Sasem, Kampil, Wiradesa, Pekalongan</li>
-                        <li><strong data-translate-key="bioReligion">Agama:</strong> Islam</li>
-                    </ul>
+                    <div class="grid grid-cols-[max-content,max-content,1fr] gap-x-2 gap-y-2 text-gray-300">
+                        <strong data-translate-key="bioName" class="font-bold">Nama</strong>
+                        <span>:</span>
+                        <span>Ahmad Sabilul Khoil</span>
+                        
+                        <strong data-translate-key="bioDob" class="font-bold">Tempat, Tanggal Lahir</strong>
+                        <span>:</span>
+                        <span>Pekalongan, 10 Januari 2008</span>
+                        
+                        <strong data-translate-key="bioAddress" class="font-bold">Alamat</strong>
+                        <span>:</span>
+                        <span>Jalan Raya Pantura No 186, Sasem, Kampil, Wiradesa, Pekalongan</span>
+                        
+                        <strong data-translate-key="bioReligion" class="font-bold">Agama</strong>
+                        <span>:</span>
+                        <span>Islam</span>
+                    </div>
+
                     <h3 class="text-2xl font-bold text-cyan-400 mt-8 mb-4" data-translate-key="eduTitle">Riwayat Pendidikan</h3>
                     <ul class="list-none space-y-2 text-gray-300">
                         <li><strong>MI Gumawang</strong> (2015 - 2021)</li>
@@ -404,10 +415,10 @@
                     </ul>
                     <h3 class="text-2xl font-bold text-cyan-400 mt-8 mb-4" data-translate-key="expTitle">Pengalaman dan Minat</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li data-translate-key="exp1">Mendalami pendidikan agama Islam serta nilai-nilai kedisiplinan sejak jenjang MI.</li>
-                        <li data-translate-key="exp2">Mempelajari tentang toleransi antaragama pada jenjang SMP.</li>
-                        <li data-translate-key="exp3">Memfokuskan diri pada bidang teknik jaringan komputer saat menempuh pendidikan di SMK.</li>
-                        <li data-translate-key="exp4">Memiliki hobi merakit komputer dan memecahkan masalah terkait jaringan.</li>
+                        <li data-translate-key="exp1">Mendalami pendidikan agama Islam serta nilai-nilai kedisiplinan sejak jenjang MI</li>
+                        <li data-translate-key="exp2">Mempelajari tentang toleransi antaragama pada jenjang SMP</li>
+                        <li data-translate-key="exp3">Memfokuskan diri pada bidang teknik jaringan komputer</li>
+                        <li data-translate-key="exp4">Memiliki hobi membuat video presentasi dan mengedit poster</li>
                     </ul>
                 </div>
             </div>
@@ -429,7 +440,7 @@
             <div id="contact-ui" class="w-full max-w-2xl text-center content-entry-box">
                 <h2 class="animated-gradient-text text-3xl md:text-5xl font-black text-center mb-12" data-translate-key="contactTitle">Animasi 3D</h2>
                 <p class="text-gray-300 mb-8" data-translate-key="contactDesc">
-                    Halaman ini sedang dalam pengembangan.
+                    Halaman ini sedang dalam pengembangan
                 </p>
             </div>
         </section>
@@ -438,9 +449,9 @@
         <footer class="text-center py-16 px-4">
             <blockquote class="max-w-3xl mx-auto">
                 <p class="text-lg italic text-gray-300" data-translate-key="footerQuote">
-                    "TUHAN adalah terangku dan keselamatanku, kepada siapakah aku harus takut? TUHAN adalah benteng hidupku, terhadap siapakah aku harus gemetar?"
+                    “Sesungguhnya Allah tidak akan mengubah keadaan suatu kaum sebelum mereka mengubah keadaan diri mereka sendiri”
                 </p>
-                <cite class="block text-cyan-400 mt-4 not-italic" data-translate-key="footerCite">— Mazmur 27:1</cite>
+                <cite class="block text-cyan-400 mt-4 not-italic" data-translate-key="footerCite">— QS Ar-Ra’d: 11</cite>
             </blockquote>
         </footer>
     </div>
@@ -510,17 +521,17 @@
                 smkDesc: { id: 'Di sini saya fokus pada keahlian, mempersiapkan diri untuk dunia kerja, serta menciptakan kenangan indah di akhir masa sekolah.', en: 'Focusing on skills, preparing for the world of work, and creating beautiful memories at the end of school.', jv: 'Fokus dhateng keahlian, nyawisaken dhiri kagem jagad pakaryan, lan ngripta kenangan endah ing pungkasaning mangsa sekolah.' },
                 aboutTitle: { id: 'Tentang Saya', en: 'About Me', jv: 'Babagan Kula' },
                 bioTitle: { id: 'Data Diri', en: 'Personal Data', jv: 'Dhata Pribadi' },
-                bioName: { id: 'Nama:', en: 'Name:', jv: 'Asma:' },
-                bioDob: { id: 'Tempat, Tanggal Lahir:', en: 'Place, Date of Birth:', jv: 'Papan, Wanci Lair:' },
-                bioAddress: { id: 'Alamat:', en: 'Address:', jv: 'Papan Dunung:' },
-                bioReligion: { id: 'Agama:', en: 'Religion:', jv: 'Agami:' },
+                bioName: { id: 'Nama', en: 'Name', jv: 'Asma' },
+                bioDob: { id: 'Tempat, Tanggal Lahir', en: 'Place, Date of Birth', jv: 'Papan, Wanci Lair' },
+                bioAddress: { id: 'Alamat', en: 'Address', jv: 'Papan Dunung' },
+                bioReligion: { id: 'Agama', en: 'Religion', jv: 'Agami' },
                 eduTitle: { id: 'Riwayat Pendidikan', en: 'Education History', jv: 'Riwayat Pawiyatan' },
                 eduSmk: { id: "<strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer", en: "<strong>SMK Ma'arif NU Tirto</strong>, Major in Computer Network Engineering", jv: "<strong>SMK Ma'arif NU Tirto</strong>, Jurusan Teknik Jaringan Komputer" },
                 expTitle: { id: 'Pengalaman dan Minat', en: 'Experience and Interests', jv: 'Patemon lan Kesenengan' },
-                exp1: { id: 'Mendalami pendidikan agama Islam serta nilai-nilai kedisiplinan sejak jenjang MI.', en: 'Deepening Islamic religious education and disciplinary values since elementary school.', jv: 'Nglampahi pendidikan agami Islam lan nilai-nilai disiplin wiwit MI.' },
-                exp2: { id: 'Mempelajari tentang toleransi antaragama pada jenjang SMP.', en: 'Learning about inter-religious tolerance in junior high.', jv: 'Sinau toleransi antaragami wonten ing SMP.' },
-                exp3: { id: 'Memfokuskan diri pada bidang teknik jaringan komputer saat menempuh pendidikan di SMK.', en: 'Focusing on the field of computer network engineering during vocational high school.', jv: 'Fokus ing babagan teknik jaringan komputer nalika wonten ing SMK.' },
-                exp4: { id: 'Memiliki hobi merakit komputer dan memecahkan masalah terkait jaringan.', en: 'Hobby of assembling computers and solving network problems.', jv: 'Gadhah kesenengan ngrakit komputer lan mrantasi prekawis jaringan.' },
+                exp1: { id: 'Mendalami pendidikan agama Islam serta nilai-nilai kedisiplinan sejak jenjang MI', en: 'Deepening Islamic religious education and disciplinary values since elementary school', jv: 'Nglampahi pendidikan agami Islam lan nilai-nilai disiplin wiwit MI' },
+                exp2: { id: 'Mempelajari tentang toleransi antaragama pada jenjang SMP', en: 'Learning about inter-religious tolerance in junior high', jv: 'Sinau toleransi antaragami wonten ing SMP' },
+                exp3: { id: 'Memfokuskan diri pada bidang teknik jaringan komputer', en: 'Focusing on the field of computer network engineering', jv: 'Fokus ing babagan teknik jaringan komputer' },
+                exp4: { id: 'Memiliki hobi membuat video presentasi dan mengedit poster', en: 'Enjoys creating video presentations and editing posters', jv: 'Gadhah kesenengan damel video presentasi lan nyunting poster' },
                 projectsTitle: { id: 'Proyek Saya', en: 'My Projects', jv: 'Ayahan Kula' },
                 proj1Title: { id: 'Perakitan Komputer', en: 'Computer Assembly', jv: 'Ngrakit Komputer' },
                 proj1Desc: { id: 'Proyek pribadi untuk merakit sebuah PC dari awal dengan fokus pada performa dan estetika.', en: 'A personal project to build a PC from scratch, focusing on performance and aesthetics.', jv: 'Setunggaling ayahan pribadi kagem mbangun PC saking wiwitan, fokus dhateng performa lan kaendahan.' },
@@ -537,9 +548,9 @@
                 modal3Title: { id: "Proyek Website Portofolio Interaktif", en: "Interactive Portfolio Website Project", jv: "Proyek Website Portofolio Interaktif" },
                 modal3Desc: { id: "Ini adalah proyek yang sedang Anda lihat saat ini. Sebuah portofolio pribadi yang saya bangun dari awal menggunakan HTML, Tailwind CSS untuk gaya modern, dan Three.js untuk menciptakan semua efek 3D yang interaktif, termasuk latar belakang visualnya.", en: "This is the project you are currently viewing. A personal portfolio that I built from scratch using HTML, Tailwind CSS for modern styling, and Three.js to create all the interactive 3D effects, including its visual background.", jv: "Menika ayahan ingkang saweg panjenengan pirsani. Setunggaling portofolio pribadi ingkang kula bangun saking wiwitan ngagem HTML, Tailwind CSS kagem gaya modern, lan Three.js kagem ngripta sedaya efek 3D ingkang interaktif, kalebet latar wingking visualipun." },
                 contactTitle: { id: 'Animasi 3D', en: '3D Animation', jv: 'Animasi 3D' },
-                contactDesc: { id: 'Halaman ini sedang dalam pengembangan.', en: 'This page is under development.', jv: 'Kaca menika saweg dipunbangun.' },
-                footerQuote: { id: '"TUHAN adalah terangku dan keselamatanku, kepada siapakah aku harus takut? TUHAN adalah benteng hidupku, terhadap siapakah aku harus gemetar?"', en: '"The LORD is my light and my salvation—whom shall I fear? The LORD is the stronghold of my life—of whom shall I be afraid?"', jv: '"Gusti punika pepadhang saha karahayon kawula, sinten ingkang kedah kawula ajrihi? Gusti punika beteng gesang kawula, dhateng sinten kawula kedah gemeter?"' },
-                footerCite: { id: '— Mazmur 27:1', en: '— Psalm 27:1', jv: '— Jabur 27:1' },
+                contactDesc: { id: 'Halaman ini sedang dalam pengembangan', en: 'This page is under development', jv: 'Kaca menika saweg dipunbangun' },
+                footerQuote: { id: '“Sesungguhnya Allah tidak akan mengubah keadaan suatu kaum sebelum mereka mengubah keadaan diri mereka sendiri”', en: '"Indeed, Allah will not change the condition of a people until they change what is in themselves"', jv: '"Saktemene Allah ora bakal ngowahi kahanane sawijining kaum sadurunge dheweke ngowahi kahanan kang ana ing awake dhewe"' },
+                footerCite: { id: '— QS Ar-Ra’d: 11', en: '— QS Ar-Ra’d: 11', jv: '— QS Ar-Ra’d: 11' },
                 langModalTitle: { id: 'Pilih Bahasa', en: 'Select Language', jv: 'Mugi Pilih Basa' }
             }
         };
