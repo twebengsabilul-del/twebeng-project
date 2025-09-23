@@ -300,6 +300,7 @@
                         <div class="chart-container">
                             <h3 class="chart-title">Aktivitas</h3>
                             <div id="bar-chart-ahmad"></div>
+                            <div id="bar-legend-ahmad" class="chart-legend"></div>
                         </div>
                         <div class="chart-container">
                             <h3 class="chart-title">Nilai Akademik</h3>
@@ -377,6 +378,7 @@
                         <div class="chart-container">
                             <h3 class="chart-title">Aktivitas</h3>
                             <div id="bar-chart-dawi"></div>
+                            <div id="bar-legend-dawi" class="chart-legend"></div>
                         </div>
                         <div class="chart-container">
                             <h3 class="chart-title">Nilai Akademik</h3>
@@ -454,6 +456,7 @@
                         <div class="chart-container">
                             <h3 class="chart-title">Aktivitas</h3>
                             <div id="bar-chart-fasa"></div>
+                            <div id="bar-legend-fasa" class="chart-legend"></div>
                         </div>
                         <div class="chart-container">
                             <h3 class="chart-title">Nilai Akademik</h3>
@@ -630,6 +633,28 @@
                     return function(t) { return arc(i(t)); };
                 });
 
+            // --- TAMBAHKAN TEKS PERSENTASE PADA PIE SLICE ---
+            arcs.append("text")
+                .attr("transform", d => `translate(${arc.centroid(d)})`)
+                .attr("dy", ".35em")
+                .style("text-anchor", "middle")
+                .style("fill", "#f3f4f6")
+                .style("font-size", "11px")
+                .style("font-weight", "600")
+                .style("pointer-events", "none") // Agar tidak mengganggu mouse event
+                .style("opacity", 0)
+                .text(d => {
+                    const percentage = (d.data.value / total) * 100;
+                    // Hanya tampilkan jika persentase cukup besar
+                    if (percentage < 7) return ""; 
+                    return `${percentage.toFixed(0)}%`;
+                })
+                .transition()
+                .duration(800)
+                .delay(1200) // Tampil setelah animasi pie selesai
+                .style("opacity", 1);
+
+
             arcs.append("title").text(d=>`${d.data.name}: ${d.data.value}`); 
             
             const centerText = svg.append("text").attr("text-anchor", "middle").attr("dy", "0.35em").style("fill", "var(--text-primary)").style("font-size", "1.5rem").style("font-weight", "bold").style("opacity", 0).text(total);
@@ -643,8 +668,8 @@
             arcs.on("mouseover",function(e,d){
                 d3.select(this).select("path").transition().duration(200).attr("d",hArc);
                 svg.selectAll(".arc path").style("opacity", p => p.data.name === d.data.name ? 1 : 0.5);
-                centerText.text(d.data.value);
-                centerSubText.text(d.data.name);
+                centerText.text(d.data.value); // Tampilkan frekuensi saat hover
+                centerSubText.text(d.data.name); // Tampilkan nama hobi di bawah
             }).on("mouseout",function(e,d){
                 d3.select(this).select("path").transition().duration(200).attr("d",arc);
                 svg.selectAll(".arc path").style("opacity", 1);
@@ -657,7 +682,11 @@
             legend.html(""); 
             const legendItems = legend.selectAll(".legend-item").data(data).enter().append("div").attr("class", "legend-item");
             legendItems.append("span").attr("class", "legend-color-dot").style("background-color", d => color(d.name));
-            legendItems.append("span").text(d => d.name);
+            // --- UBAH LEGENDA UNTUK MENUNJUKKAN PERSENTASE ---
+            legendItems.append("span").text(d => {
+                const percentage = (d.value / total) * 100;
+                return `${d.name} (${percentage.toFixed(1)}%)`;
+            });
         }
         
         function createScoreBarChart(data, chartElementId) {
@@ -713,10 +742,10 @@
                 .attr("fill", d => color(d.name))
                 .on("mouseover", function(e, d) {
                     d3.select(this)
-                      .style("filter", "brightness(1.2)")
-                      .transition().duration(200)
-                      .attr('y', y(d.value) - 10) // Pindahkan ke atas
-                      .attr('height', h - y(d.value) + 10); // Tambah tinggi
+                        .style("filter", "brightness(1.2)")
+                        .transition().duration(200)
+                        .attr('y', y(d.value) - 10) // Pindahkan ke atas
+                        .attr('height', h - y(d.value) + 10); // Tambah tinggi
                     
                     svg.append("text")
                        .attr("class", "bar-label")
@@ -733,12 +762,12 @@
                 })
                 .on("mouseout", function(e, d) {
                     d3.select(this)
-                      .style("filter", "brightness(1)")
-                      .transition().duration(200)
-                      .attr('y', y(d.value)) // Kembali ke y semula
-                      .attr('height', h - y(d.value)); // Kembali ke tinggi semula
+                        .style("filter", "brightness(1)")
+                        .transition().duration(200)
+                        .attr('y', y(d.value)) // Kembali ke y semula
+                        .attr('height', h - y(d.value)); // Kembali ke tinggi semula
 
-                     svg.selectAll(".bar-label").transition().duration(200).style("opacity", 0).remove();
+                         svg.selectAll(".bar-label").transition().duration(200).style("opacity", 0).remove();
                 });
 
             bars.transition().duration(1200).ease(d3.easeBounceOut).delay((d, i) => i * 100)
@@ -748,47 +777,180 @@
             bars.append("title").text(d => `${d.name}: ${d.value}`);
         }
 
-        function createBarChart(data, elementId) { 
+        // --- DIAGRAM BARU: RADIAL BAR CHART ---
+        function createRadialBarChart(data, elementId, legendElementId) {
             const chartDiv = document.querySelector(elementId);
             if (!chartDiv) return;
-            chartDiv.innerHTML = ""; 
-            const m={top:30,right:20,bottom:60,left:40}, w=300-m.left-m.right, h=250-m.top-m.bottom; 
-            const svg=d3.select(elementId).append("svg").attr("width",w+m.left+m.right).attr("height",h+m.top+m.bottom).append("g").attr("transform",`translate(${m.left},${m.top})`); 
-            const x=d3.scaleBand().range([0,w]).domain(data.map(d=>d.name)).padding(0.2); 
-            const y=d3.scaleLinear().range([h,0]).domain([0,d3.max(data,d=>d.value)]); 
+            chartDiv.innerHTML = "";
+
+            const margin = {top: 10, right: 10, bottom: 10, left: 10},
+                  width = 300 - margin.left - margin.right,
+                  height = 250 - margin.top - margin.bottom,
+                  innerRadius = 50,
+                  outerRadius = Math.min(width, height) / 2;
+
+            const svg = d3.select(elementId)
+              .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform", `translate(${width/2 + margin.left}, ${height/2 + margin.top})`);
+
+            const color = d3.scaleOrdinal()
+                .domain(data.map(d => d.name))
+                .range(["#6366f1", "#ec4899", "#10b981", "#f59e0b", "#3b82f6", "#ef4444", "#8b5cf6"]);
+
+            const x = d3.scaleBand()
+                .range([0, 2 * Math.PI])
+                .align(0)
+                .domain(data.map(d => d.name));
+
+            const y = d3.scaleRadial()
+                .range([innerRadius, outerRadius])
+                .domain([0, d3.max(data, d => d.value) * 1.1]);
             
-            svg.append("g").attr("transform",`translate(0,${h})`).call(d3.axisBottom(x)).selectAll("text").style("fill","var(--text-secondary)").attr("transform","translate(-10,0)rotate(-45)").style("text-anchor","end"); 
-            svg.append("g").call(d3.axisLeft(y).ticks(5).tickFormat(d3.format("d"))).selectAll("text").style("fill","var(--text-secondary)"); 
-            svg.selectAll(".domain,.tick line").style("stroke","var(--border-color)"); 
-            
-            const bars=svg.selectAll(".bar").data(data).enter().append("rect").attr("class","bar")
-                .attr("x",d=>x(d.name)).attr("y",y(0))
-                .attr("width",x.bandwidth()).attr("height",0)
-                .attr("fill","var(--accent-color)")
-                .on("mouseover",function(e,d){
-                    d3.select(this).attr("fill","var(--accent-hover)");
-                    svg.append("text")
-                       .attr("class", "bar-label")
-                       .attr("x", x(d.name) + x.bandwidth() / 2)
-                       .attr("y", y(d.value) - 5)
-                       .attr("text-anchor", "middle")
-                       .style("fill", "var(--text-primary)")
-                       .style("font-size", "0.875rem")
-                       .style("opacity", 0)
-                       .text(d.value)
-                       .transition().duration(300)
-                       .style("opacity", 1);
-                })
-                .on("mouseout",function(e,d){
-                    d3.select(this).attr("fill","var(--accent-color)");
-                    svg.selectAll(".bar-label").transition().duration(300).style("opacity", 0).remove();
-                }); 
+            const total = d3.sum(data, d => d.value);
+
+            const centerValue = svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "-0.2em")
+                .style("fill", "var(--text-primary)")
+                .style("font-size", "2rem")
+                .style("font-weight", "700");
                 
-            bars.transition().duration(1200).ease(d3.easeBounceOut).delay((d,i)=>i*100)
-                .attr("y",d=>y(d.value)).attr("height",d=>h-y(d.value)); 
+            const centerLabel = svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "1.2em")
+                .style("fill", "var(--text-secondary)")
+                .style("font-size", "0.9rem")
+                .style("text-transform", "capitalize");
+
+            const initialArc = d3.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(innerRadius) // Mulai dari dalam
+                .startAngle(d => x(d.name))
+                .endAngle(d => x(d.name) + x.bandwidth())
+                .padAngle(0.01)
+                .padRadius(innerRadius);
+                
+            const finalArc = d => d3.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(y(d.value))
+                .startAngle(x(d.name))
+                .endAngle(x(d.name) + x.bandwidth())
+                .padAngle(0.01)
+                .padRadius(innerRadius)(d);
+
+            const bars = svg.append("g")
+                .selectAll("path")
+                .data(data)
+                .join("path")
+                .attr("fill", d => color(d.name))
+                .attr("d", initialArc);
+
+            // Animation
+            bars.transition()
+                .duration(1200)
+                .delay((d,i) => i * 100)
+                .ease(d3.easeBounceOut) // <-- EFEK BARU: MEMANTUL
+                .attr("d", finalArc);
             
-            bars.append("title").text(d=>`${d.name}: ${d.value} kali`);
+            // --- TAMBAHKAN PERSENTASE DI DALAM RADIAL BAR ---
+            const labels = svg.append("g")
+                .selectAll("text")
+                .data(data)
+                .join("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.35em")
+                .style("fill", "#f3f4f6")
+                .style("font-size", "10px")
+                .style("font-weight", "600")
+                .style("pointer-events", "none")
+                .style("opacity", 0);
+
+            // Tampilkan label setelah animasi bar selesai
+            setTimeout(() => {
+                labels
+                    .attr("transform", d => {
+                        // Kalkulasi manual untuk posisi tengah yang lebih akurat
+                        const midAngle = x(d.name) + x.bandwidth() / 2;
+                        const midRadius = (innerRadius + y(d.value)) / 2;
+                        
+                        // Konversi dari koordinat polar ke cartesian untuk penempatan teks
+                        // sin(angle) untuk x dan -cos(angle) untuk y karena D3 memulai sudut dari atas (jam 12)
+                        const cx = midRadius * Math.sin(midAngle);
+                        const cy = -midRadius * Math.cos(midAngle);
+                        
+                        return `translate(${cx}, ${cy})`;
+                    })
+                    .text(d => {
+                        const percentage = (d.value / total) * 100;
+                        // Sembunyikan jika segmen terlalu kecil untuk menghindari tumpang tindih
+                        const midRadiusForCheck = (innerRadius + y(d.value)) / 2; // FIX: Definisikan lagi di sini
+                        const arcLengthInPixels = x.bandwidth() * midRadiusForCheck;
+                        if (arcLengthInPixels < 20) return ""; 
+                        return `${percentage.toFixed(0)}%`;
+                    })
+                    .transition().duration(500).style("opacity", 1);
+            }, 1300);
+
+
+            // Hover effects
+            bars.on("mouseover", function(event, d) {
+                d3.select(this)
+                    .transition()
+                    .duration(250)
+                    .ease(d3.easeCubicOut)
+                    .attr("fill", d3.color(color(d.name)).brighter(0.7))
+                    .attr("d", d3.arc() // <-- EFEK BARU: MENGANGKAT/MEMBESAR
+                        .innerRadius(innerRadius)
+                        .outerRadius(y(d.value) + 10) 
+                        .startAngle(x(d.name))
+                        .endAngle(x(d.name) + x.bandwidth())
+                        .padAngle(0.01)
+                        .padRadius(innerRadius)
+                    );
+                centerValue.text(d.value);
+                centerLabel.text(d.name);
+                labels.transition().duration(100).style("opacity", 0); // Sembunyikan semua label
+            }).on("mouseout", function(event, d) {
+                d3.select(this)
+                    .transition()
+                    .duration(250)
+                    .ease(d3.easeCubicOut)
+                    .attr("fill", color(d.name))
+                    .attr("d", finalArc); // Kembali ke ukuran semula
+                centerValue.text("");
+                centerLabel.text("");
+                labels.transition().delay(150).duration(100).style("opacity", 1); // Tampilkan lagi
+            });
+            
+            bars.append("title").text(d => `${d.name}: ${d.value} kali`);
+            
+             // --- PEMBUATAN LEGENDA ---
+            const legendContainer = d3.select(legendElementId);
+            if (legendContainer.node()){
+                legendContainer.html("");
+
+                const legendItems = legendContainer.selectAll(".legend-item")
+                    .data(data)
+                    .enter()
+                    .append("div")
+                    .attr("class", "legend-item");
+
+                legendItems.append("span")
+                    .attr("class", "legend-color-dot")
+                    .style("background-color", d => color(d.name));
+
+                legendItems.append("span")
+                    .text(d => {
+                        const percentage = (d.value / total) * 100;
+                        return `${d.name} (${percentage.toFixed(1)}%)`;
+                    });
+            }
         }
+
+
         function createTable(data, elementId) {
             const tbody = document.getElementById(elementId);
             if (!tbody) return;
@@ -808,7 +970,7 @@
             createTable(dataAhmad.hobi, "hobi-table-ahmad");
             createTable(dataAhmad.aktivitas, "aktivitas-table-ahmad");
             createPieChart(dataAhmad.hobi, "#pie-chart-ahmad", "#pie-legend-ahmad");
-            createBarChart(dataAhmad.aktivitas, "#bar-chart-ahmad");
+            createRadialBarChart(dataAhmad.aktivitas, "#bar-chart-ahmad", "#bar-legend-ahmad");
             createScoreBarChart(dataAhmad.nilaiAkademik, "#prestasi-chart-ahmad");
             setupInteractiveCard('academic-card-ahmad', 'academic-achievement-ahmad', dataAhmad);
             calculateAndDisplayStats(dataAhmad, {
@@ -823,7 +985,7 @@
             createTable(dataDawi.hobi, "hobi-table-dawi");
             createTable(dataDawi.aktivitas, "aktivitas-table-dawi");
             createPieChart(dataDawi.hobi, "#pie-chart-dawi", "#pie-legend-dawi");
-            createBarChart(dataDawi.aktivitas, "#bar-chart-dawi");
+            createRadialBarChart(dataDawi.aktivitas, "#bar-chart-dawi", "#bar-legend-dawi");
             createScoreBarChart(dataDawi.nilaiAkademik, "#prestasi-chart-dawi");
             setupInteractiveCard('academic-card-dawi', 'academic-achievement-dawi', dataDawi);
             calculateAndDisplayStats(dataDawi, {
@@ -838,7 +1000,7 @@
             createTable(dataFasa.hobi, "hobi-table-fasa");
             createTable(dataFasa.aktivitas, "aktivitas-table-fasa");
             createPieChart(dataFasa.hobi, "#pie-chart-fasa", "#pie-legend-fasa");
-            createBarChart(dataFasa.aktivitas, "#bar-chart-fasa");
+            createRadialBarChart(dataFasa.aktivitas, "#bar-chart-fasa", "#bar-legend-fasa");
             createScoreBarChart(dataFasa.nilaiAkademik, "#prestasi-chart-fasa");
             setupInteractiveCard('academic-card-fasa', 'academic-achievement-fasa', dataFasa);
             calculateAndDisplayStats(dataFasa, {
@@ -850,13 +1012,12 @@
             setupAnalysisToggle('analysis-container-fasa', 'summary-fasa', 'prompt-fasa', dataFasa);
             
              document.querySelectorAll('.tab-btn').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const pageId = event.target.getAttribute('onclick').match(/'([^']+)'/)[1];
-                    showPage(pageId);
-                });
-            });
+                 button.addEventListener('click', (event) => {
+                     const pageId = event.target.getAttribute('onclick').match(/'([^']+)'/)[1];
+                     showPage(pageId);
+                 });
+             });
         });
     </script>
 </body>
 </html>
-
